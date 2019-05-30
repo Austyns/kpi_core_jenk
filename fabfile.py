@@ -95,7 +95,7 @@ def start():
     with use(env):
         # sudo("ls")
         sudo("pip install -r requirements.txt")
-        run("gunicorn --bind 0.0.0.0:8000 kpi_core.wsgi:application ", pty=False)
+        run("gunicorn --bind 0.0.0.0:8000 kpi_core.wsgi:application  --daemon", pty=False)
     sudo("service nginx restart")
 
 @task
@@ -105,7 +105,7 @@ def restart():
         # sudo("ls")
         sudo("pip install -r requirements.txt")
         execute(stop)
-        run("gunicorn --bind 0.0.0.0:8000 kpi_core.wsgi:application ", pty=False)
+        run("gunicorn --bind 0.0.0.0:8000 kpi_core.wsgi:application  --daemon", pty=False)
     sudo("service nginx restart")
 
 
