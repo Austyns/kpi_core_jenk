@@ -57,19 +57,19 @@ def package():
         run("rm {0}".format(archive))
     local("rm {0}".format(archive))
     print("Finished transfering the application,")
-    print "updating nginx configuration on the server"
+    print( "updating nginx configuration on the server")
     sudo("test -d {0} || mkdir -p {0}".format("~/nginx/conf/backup"))
     if run("test -f {0}".format("/etc/nginx/sites-enabled/default"), warn_only=True).succeeded:
         print("Moving the default nginx configuration to the backup directory")
         sudo("mv {0} ~/nginx/conf/backup/".format("/etc/nginx/sites-enabled/default"))
-    print "updating nginx configuration on the server"
+    print( "updating nginx configuration on the server")
     put("./settings/sites.conf", "/etc/nginx/conf.d/", use_sudo=True)
 
-    print "Setting up Cors Midware for Django Rest Framework"
+    print( "Setting up Cors Midware for Django Rest Framework")
     # put("./.env/lib/python2.7/site-packages/corsheaders/middleware.py", base+"/env/lib/python2.7/site-packages/corsheaders/middleware.py", use_sudo=True)
 
-    print "Whitenose to serve Djangos static file in gunicorn"
-    put("./settings/wsgi.py", base+"/kpi_core/wsgi.py", use_sudo=True)
+    print( "Whitenose to serve Djangos static file in gunicorn")
+    # put("./settings/wsgi.py", base+"/kpi_core/wsgi.py", use_sudo=True)
  
 @task   
 def setup():
@@ -80,9 +80,9 @@ def setup():
     sudo("apt-get -y install fabric")
     sudo("pip install virtualenv")
     sudo("apt-get -y install nginx")
-    sudo("apt-get install postgresql")
-    sudo("apt-get install postgresql-contrib")
-    sudo('-u postgres psql -c "ALTER USER postgres PASSWORD 'pass1234'; " ')
+    # sudo("apt-get install postgresql")
+    # sudo("apt-get install postgresql-contrib")
+    # run(""" -u postgres psql -c "ALTER USER postgres PASSWORD 'pass1234' ; "  """)
     with cd(base):
         mkvirtualenv(env)
     with use(env):
@@ -119,16 +119,16 @@ def stop():
 @task
 def undeploy():
     '''Clean old install'''
-    print "Cleaning out old install of kpi"
+    print( "Cleaning out old install of kpi")
     execute(stop)
     sudo("rm -rf %s" % root)
     sudo("rm /etc/nginx/conf.d/sites.conf")
-    print "Finished cleaning out the old installation"
+    print( "Finished cleaning out the old installation")
 
 @task
 def deploy():
     '''Setup, and run the kpi_core API'''
-    print "Creating required application directories"
+    print( "Creating required application directories")
     for name in (base,):
         run("test -d {0} || mkdir -p {0}".format(name))
     execute(setup)
@@ -138,7 +138,7 @@ def deploy():
 @task
 def update():
     '''Update, and run the mark API'''
-    print "Creating required application directories"
+    print( "Creating required application directories")
     for name in (base,):
         run("test -d {0} || mkdir -p {0}".format(name))
     execute(package)
@@ -149,7 +149,7 @@ def header(message, char= "*"):
     '''formats messages within this script in a particular way'''
     width = 70
     padding = (width - len(message))/2
-    print(char * padding + message + char * padding)
+    # print(char * padding + message + char * padding)
 
 @task
 def clean():
