@@ -14,10 +14,10 @@ from fabric.api import local, run, cd, sudo, prefix, execute, task, hosts, env
 from fabric.operations import put
 
 # env.use_ssh_config = True
-env.hosts = ["68.183.103.72"]
+env.hosts = ["142.93.137.49"]
 env.user = "root"
 # env.key_filename = "path/to/key/file"
-env.password = ""
+env.password = "pass1234"
 env.port = 22
 
 sys.path.append(".")
