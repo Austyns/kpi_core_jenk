@@ -57,6 +57,7 @@ MIDDLEWARE = [
 # Django rest framework CONFIG 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
+<<<<<<< HEAD
         'rest_framework.permissions.IsAdminUser',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -65,6 +66,10 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ),
 
+=======
+        # 'rest_framework.permissions.IsAdminUser',
+    ),
+>>>>>>> 877893f7a98f908270bb5adb4f51ca251064d96c
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 100,
@@ -77,8 +82,11 @@ REST_FRAMEWORK = {
     # 'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
 }
 
+<<<<<<< HEAD
 CORS_ORIGIN_ALLOW_ALL = True
 
+=======
+>>>>>>> 877893f7a98f908270bb5adb4f51ca251064d96c
 
 ROOT_URLCONF = 'kpi_core.urls'
 
