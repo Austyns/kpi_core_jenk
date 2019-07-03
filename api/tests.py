@@ -1,5 +1,4 @@
 from django.test import TestCase
-<<<<<<< HEAD
 from rest_framework.test import APIRequestFactory, RequestsClient, APITestCase
 
 from django.urls import reverse
@@ -9,17 +8,11 @@ from rest_framework.authtoken.models import Token
 # from api import views
 from requests.auth import HTTPBasicAuth
 
-=======
->>>>>>> 877893f7a98f908270bb5adb4f51ca251064d96c
 from api.models import Department
 
 
 class DepartmentTest(TestCase):
     """ Test module for Department model """
-<<<<<<< HEAD
-=======
-
->>>>>>> 877893f7a98f908270bb5adb4f51ca251064d96c
     def setUp(self):
         Department.objects.create(
             name='Casper', description='Casper Department')
@@ -35,7 +28,6 @@ class DepartmentTest(TestCase):
             Department_muffin.description, "Muffin Department")
 
 
-<<<<<<< HEAD
     def test_authentication_of_requests(self):
         client = RequestsClient()
         """
@@ -63,5 +55,3 @@ class DepartmentTest(TestCase):
         
         self.assertEqual(Department.objects.all.count(), 1)
 
-=======
->>>>>>> 877893f7a98f908270bb5adb4f51ca251064d96c
